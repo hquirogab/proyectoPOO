@@ -23,14 +23,19 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../Imagenes/icono.png")).getImage());
        
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Audios/AudioMenu.wav"));
+       ponerSonido(true);
         
-        sonido.loop();
         
    }
 
-    
+    public void ponerSonido(boolean bol){
+         AudioClip sonido;
+        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Audios/AudioMenu.wav"));
+        if(bol==true){
+            sonido.play();
+        }
+        else sonido.stop();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,6 +59,11 @@ public class Inicio extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 153, 51));
         jButton1.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jButton1.setText("Jugar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 230, -1));
 
         jButton2.setBackground(new java.awt.Color(255, 153, 51));
@@ -111,6 +121,14 @@ public class Inicio extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Nivel1 n1 = new Nivel1();
+        n1.setVisible(true);
+        ponerSonido(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
