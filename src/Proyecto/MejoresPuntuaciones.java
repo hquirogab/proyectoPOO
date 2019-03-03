@@ -192,9 +192,6 @@ public class MejoresPuntuaciones extends javax.swing.JFrame {
         Inicio in = new Inicio();
         in.setVisible(true);
         this.dispose();
-        AudioClip sonido;
-        sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Audios/AudioMenu.wav"));
-        sonido.stop();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
