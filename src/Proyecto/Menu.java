@@ -5,13 +5,16 @@
  */
 package Proyecto;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -22,7 +25,7 @@ import javafx.stage.Stage;
  */
 public class Menu {
     private Scene scene;
-    private StackPane grid;
+    private StackPane stackGrid;
     private Image background;
     private Label title;
     private Button play;
@@ -30,55 +33,61 @@ public class Menu {
     private Button highScores;
     private Button exit;
     private ImageView image;
-    private VBox vbox; 
-    private VBox v1;
+    private VBox internalVBox; 
+    private VBox externalVBox;
+    private GridPane grid;
     
     public Menu(){
-      
-    grid = new StackPane();
-    //grid.setAlignment(Pos.CENTER);
-    grid.setPadding(new Insets(25,25,25,25));
+        
+        //Contiene todos los elementos
+        stackGrid = new StackPane();
+        stackGrid.setPadding(new Insets(25, 25, 25, 25));
+        stackGrid.setAlignment(Pos.CENTER);
+        
+        
+        internalVBox = new VBox(20); //Contiene los botones
+        internalVBox.setAlignment(Pos.CENTER);
+        
+        //GridPane que contiene el titulo y los botones
+        grid = new GridPane();
+        grid.setVgap(50);
+        grid.setAlignment(Pos.CENTER);
+        
+        
+        
+        background = new Image("Imagenes/fondoInicio.jpg");
+        image = new ImageView(background);
+        
+        title = new Label("Orion's Maze");
+        
+        play = new Button("Play");
+        play.setMaxWidth(100);
+        
+        options = new Button("Options");
+        options.setMaxWidth(100);
+        
+        highScores = new Button("High Scores");
+        highScores.setMaxWidth(100);
+        
+        exit = new Button("Exit");
+        exit.setMaxWidth(100);
     
-    background = new Image("Imagenes/fondoInicio.jpg");
+        internalVBox.getChildren().add(play);
+        internalVBox.getChildren().add(options);
+        internalVBox.getChildren().add(highScores);
+        internalVBox.getChildren().add(exit);
+        
+        //Añade los elementos al GridPane
+        grid.add(title, 0, 1);
+        grid.add(internalVBox, 0, 2);
+        grid.setHalignment(title, HPos.CENTER); //Centra el titulo en su casilla
+        
+        stackGrid.getChildren().add(image);
+        stackGrid.getChildren().add(grid);
+        
+        scene = new Scene(stackGrid, 650, 406);
     
-    image = new ImageView();
-    image.setImage(background);
-    grid.getChildren().add(image);
     
-    v1 = new VBox(70);
-    v1.setAlignment(Pos.BASELINE_CENTER);
-    //v1.setLayoutY(500);
-    //v1.setLayoutX(500);
-    
-    vbox = new VBox(20);
-    vbox.setAlignment(Pos.BOTTOM_CENTER);
-    
-    title = new Label("Orion's Maze");
-    title.setLayoutX(200);
-    title.setLayoutY(0);
-    grid.getChildren().add(title);
-    //v1.getChildren().add(title);
-    
-    play = new Button ("Play");
-    vbox.getChildren().add(play);
-    play.setMaxSize(100, 0);
-    
-    options = new Button ("Options");
-    vbox.getChildren().add(options);
-    options.setMaxSize(100, 0);
-    
-    highScores = new Button ("High Scores");
-    vbox.getChildren().add(highScores);
-    highScores.setMaxSize(100, 0);
-    
-    exit = new Button ("Exit");
-    vbox.getChildren().add(exit);
-    exit.setMaxSize(100, 0);
-    
-    //grid.getChildren().add(v1);
-    grid.getChildren().add(vbox);
-    
-    scene = new Scene(grid, 650, 406);
     }
     
     public void show(Stage stage) {
