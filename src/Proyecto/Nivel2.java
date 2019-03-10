@@ -5,15 +5,12 @@
  */
 package Proyecto;
 
-import javafx.animation.AnimationTimer;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -21,7 +18,7 @@ import javafx.stage.Stage;
  *
  * @author Juan
  */
-public class Nivel1{
+public class Nivel2 {
     private Scene scene;
     private GraphicsContext gc;
     private StackPane stackGrid;
@@ -31,25 +28,20 @@ public class Nivel1{
     private Image background2;
     private ImageView image2;
     private Canvas canvas;
-    private HBox hbox;
     private int cont=650;
     
-    public Nivel1(){
+    public Nivel2(){
         stackGrid = new StackPane();
-        background1 = new Image("Imagenes/esc1.jpg");
+        background1 = new Image("Imagenes/esc2.jpg");
         image1 = new ImageView(background1);
         //background2 = new Image("Imagenes/ground.jpg");
         //image2 = new ImageView(background2);
         
         pause = new Button ("Pause");
-        pause.setAlignment(Pos.TOP_RIGHT);
         
-        hbox = new HBox();
-        hbox.setAlignment(Pos.TOP_RIGHT);
-        hbox.getChildren().add(pause);
         
         stackGrid.getChildren().add(image1);
-        stackGrid.getChildren().add(hbox);
+        //stackGrid.getChildren().add(pause);
         scene = new Scene (stackGrid, 650, 406);
     }
     public void show(Stage stage) {
@@ -67,7 +59,4 @@ public class Nivel1{
     public Button getPause() {
         return pause;
     }
-
-    
-    
 }

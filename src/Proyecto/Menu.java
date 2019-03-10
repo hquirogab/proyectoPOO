@@ -14,9 +14,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -59,17 +62,24 @@ public class Menu {
         image = new ImageView(background);
         
         title = new Label("Orion's Maze");
+        title.setTextFill(Color.web("#ffffff"));
+        title.setFont(new Font("Georgia", 40));
         
         play = new Button("Play");
+        play.setTextFill(Color.web("#000000"));
         play.setMaxWidth(100);
         
-        options = new Button("Options");
+        options = new Button("Options");  
+        options.setTextFill(Color.web("#000000"));
+
         options.setMaxWidth(100);
         
         highScores = new Button("High Scores");
+        highScores.setTextFill(Color.web("#000000"));
         highScores.setMaxWidth(100);
         
         exit = new Button("Exit");
+        exit.setTextFill(Color.web("#000000"));
         exit.setMaxWidth(100);
     
         internalVBox.getChildren().add(play);
@@ -95,6 +105,12 @@ public class Menu {
       stage.setScene(scene);
       stage.show();
    }
+    
+    public void mostrar(Stage stage){
+        stage.setTitle("Ventana 1");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     
     public Button getPlay() {
@@ -112,5 +128,8 @@ public class Menu {
     public Button getExit() {
         return exit;
     }
+
+    
+    
     
 }
