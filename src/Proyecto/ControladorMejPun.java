@@ -14,12 +14,13 @@ import javafx.event.EventHandler;
  */
 public class ControladorMejPun {
      private MejoresPuntuaciones mp;
+     private Modelo modelo;
 
     public ControladorMejPun() {
         this.mp = new MejoresPuntuaciones();
         
         //adicionar eventos
-        
+        Modelo modelo = new Modelo();
         this.mp.getBack().setOnAction(new EventoBack());
         this.mp.getL1();
         
@@ -36,7 +37,7 @@ public class ControladorMejPun {
 
         @Override
         public void handle(ActionEvent t) {
-           ControladorMenu m = new ControladorMenu();
+           ControladorMenu m = new ControladorMenu(modelo);
            m.mostrarVista();
         }
         

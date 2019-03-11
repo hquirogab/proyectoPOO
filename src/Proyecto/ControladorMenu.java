@@ -14,14 +14,15 @@ import javafx.event.EventHandler;
  */
 public class ControladorMenu {
     private Menu menu;
+    private Modelo modelo;
 
-    public ControladorMenu() {
+    public ControladorMenu(Modelo modelo) {
         this.menu = new Menu();
+        this.modelo = new Modelo();
         
         //adicionar eventos
         
         this.menu.getPlay().setOnAction(new EventoPlay());
-        this.menu.getOptions().setOnAction(new EventoOptions());
         this.menu.getHighScores().setOnAction(new EventoHighScores());
         this.menu.getExit().setOnAction(new EventoExit());
     }
@@ -37,21 +38,13 @@ public class ControladorMenu {
 
         @Override
         public void handle(ActionEvent t) {
-           ControladorNivel1 n = new ControladorNivel1();
+           ControladorNivel1 n = new ControladorNivel1(modelo);
            n.mostrarVista();
         }
         
     }
     
-    class EventoOptions implements EventHandler<ActionEvent>{
-
-        @Override
-        public void handle(ActionEvent t) {
-           //Controlador2 c2 = new Controlador2(modelo);
-           //c2.mostrarVista();
-        }
-        
-    }
+   
     
     class EventoHighScores implements EventHandler<ActionEvent>{
 
@@ -68,8 +61,6 @@ public class ControladorMenu {
         @Override
         public void handle(ActionEvent t) {
             System.exit(0);
-           //Controlador2 c2 = new Controlador2(modelo);
-           //c2.mostrarVista();
         }
         
     }

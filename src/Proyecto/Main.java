@@ -19,13 +19,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Singleton singleton = singleton = Singleton.getSingleton();
+        Singleton singleton = Singleton.getSingleton();
         singleton.setStage(primaryStage);
-        
+        Modelo modelo = new Modelo();
         
         
         //Invocar el controlador de la vista que se quiere visualizar
-        ControladorMenu c1= new ControladorMenu();
+        ControladorMenu c1= new ControladorMenu(modelo);
         c1.mostrarVista();
     }
 }

@@ -33,7 +33,6 @@ public class Menu {
     private Image background;
     private Label title;
     private Button play;
-    private Button options;
     private Button highScores;
     private Button exit;
     private ImageView image;
@@ -71,10 +70,7 @@ public class Menu {
         play.setTextFill(Color.web("#000000"));
         play.setMaxWidth(100);
         
-        options = new Button("Options");  
-        options.setTextFill(Color.web("#000000"));
-
-        options.setMaxWidth(100);
+       
         
         highScores = new Button("High Scores");
         highScores.setTextFill(Color.web("#000000"));
@@ -85,7 +81,6 @@ public class Menu {
         exit.setMaxWidth(100);
     
         internalVBox.getChildren().add(play);
-        internalVBox.getChildren().add(options);
         internalVBox.getChildren().add(highScores);
         internalVBox.getChildren().add(exit);
         
@@ -124,9 +119,6 @@ public class Menu {
         return play;
     }
 
-    public Button getOptions() {
-        return options;
-    }
 
     public Button getHighScores() {
         return highScores;
