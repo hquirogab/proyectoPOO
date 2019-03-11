@@ -82,7 +82,10 @@ public abstract class Controlador {
         }else if(((object.getxPos()-1)==(objeto.getxPos()+objeto.getWidth()))&&cond2){
             return "LEFT";
         }
+        System.out.println(object.getxPos()-1);
+        System.out.println(objeto.getxPos()+objeto.getWidth());
         }
+        
         return "NONE";
     }
     

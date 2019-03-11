@@ -95,9 +95,9 @@ public class ControladorNivel1 extends Controlador{
                         if(ventana.getPlayer().getyPos() == 331)ventana.getPlayer().setDirection("UP"); ////331 + mutiplo de 3
                 }
             }*/
-    }
+        }
             
-    }
+      }
     }
     
     class ToReleaseKeyEvent implements EventHandler<KeyEvent>{
@@ -124,5 +124,6 @@ public class ControladorNivel1 extends Controlador{
         }
         
     }
-    }
+    
+  }
 

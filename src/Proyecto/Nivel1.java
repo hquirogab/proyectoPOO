@@ -65,7 +65,7 @@ public class Nivel1 extends Vista {
         this.bg=new Background(0, 0, 1800, 860, new Image("Imagenes/fondoN1.jpg"));
         this.bgInverted=new Background(0, 0, 1800, 860, new Image("Imagenes/fondoN1invertido.jpg"));
         
-        StaticObject plataforma0=new StaticObject(495, 355, 50, 10, new Image("Imagenes/alienfloor2_diffuse.jpg")); //Los terminos x, y deben ser el x, y
+        StaticObject plataforma0=new StaticObject(495, 346, 59, 14, new Image("Imagenes/alienfloor2_diffuse.jpg")); //Los terminos x, y deben ser el x, y
         this.objects.add(plataforma0);                                        //del jugador + o - multiplos de quince para que las colisiones se registren 
  
     }
@@ -147,7 +147,7 @@ public class Nivel1 extends Vista {
             if(salto&&contadorSalto<=50){
                 
                 player.moveUp();
-                
+                player.setCanGoDown(true);
                 /*if(player.getyPos() > 200 && player.getDirection().equals("UP")){
 
                         player.moveUp();
@@ -164,6 +164,7 @@ public class Nivel1 extends Vista {
                 contadorSalto++;
                 
             }else if(contadorSalto>0){
+                if(player.getCanGoDown())
                 player.moveDown();
                 contadorSalto--;
                 salto=false;
