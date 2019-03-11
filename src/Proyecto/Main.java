@@ -23,6 +23,7 @@ public class Main extends Application {
         singleton.setStage(primaryStage);
         
         
+        
         //Invocar el controlador de la vista que se quiere visualizar
         ControladorMenu c1= new ControladorMenu();
         c1.mostrarVista();

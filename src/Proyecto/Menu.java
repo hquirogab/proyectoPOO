@@ -18,6 +18,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -39,6 +40,7 @@ public class Menu {
     private VBox internalVBox; 
     private VBox externalVBox;
     private GridPane grid;
+    private AudioClip audio;
     
     public Menu(){
         
@@ -96,7 +98,12 @@ public class Menu {
         stackGrid.getChildren().add(grid);
         
         scene = new Scene(stackGrid, 650, 406);
-    
+        audio = new AudioClip (this.getClass().getResource("AudioMenu.wav").toString());
+        audio.play();
+        
+        if(audio.isPlaying()==false){
+            audio.play();
+        }
     
     }
     
