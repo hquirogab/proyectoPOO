@@ -6,6 +6,7 @@
 package Proyecto;
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -24,7 +25,7 @@ public class Player extends Movable {
         left = new Image("Imagenes/left0.png");
         front = new Image("Imagenes/down1.png");    
         this.headWidth=headWidth;
-
+        
     }
 
     
@@ -73,6 +74,8 @@ public class Player extends Movable {
     public void setHeadWidth(int yPosCuerpo) {
         this.headWidth = yPosCuerpo;
     }
+
+    
 
 
     

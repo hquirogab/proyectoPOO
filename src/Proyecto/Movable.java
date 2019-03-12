@@ -6,6 +6,8 @@
 package Proyecto;
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -18,6 +20,7 @@ public abstract class Movable extends Thread {
     protected int height;
     protected Image sprite;
     protected String direction;
+  
 
     public Movable(int xPos, int yPos, int width, int height, Image sprite) {
         this.xPos = xPos;
@@ -26,6 +29,7 @@ public abstract class Movable extends Thread {
         this.width=width;
         this.height=height;
         this.direction="UP";
+        
     }
 
     public Movable(int xPosIn, int xPosFin){ //Hacer que la funcion que dibuja el piso en realidad dibuje pequeños segmentos de piso
@@ -158,7 +162,8 @@ public abstract class Movable extends Thread {
     public void setDirection(String direction) {
         this.direction = direction;
     }
-
+    
+    
     
 }
 

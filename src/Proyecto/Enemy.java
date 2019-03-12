@@ -6,6 +6,10 @@
 package Proyecto;
 
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
+import javafx.scene.shape.Shape;
 
 /**
  *
@@ -40,5 +44,4 @@ public class Enemy extends Movable implements Runnable {
             if(yPos == 330)direction = "UP";
         }
     }
-    
 }

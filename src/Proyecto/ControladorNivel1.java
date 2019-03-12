@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 
 
 /**
@@ -36,14 +37,10 @@ public class ControladorNivel1 extends Controlador{
         this.ventana.mostrar(singleton.getStage());
     }
     
-   
-    
-    
     
     class ToPressKeyEvent implements EventHandler<KeyEvent>{
     @Override
     public void handle(KeyEvent event){
-
           String code = event.getCode().toString();
             if(!ventana.getKeyPresses().contains(code)){
                         ventana.getKeyPresses().add(code);
@@ -51,7 +48,7 @@ public class ControladorNivel1 extends Controlador{
 
             /*Solo se mueve hacia la derecha si no colisiona con ningún objeto en esa dirección*/
             if (ventana.getKeyPresses().contains("RIGHT")&&(!colision(ventana.getPlayer(), ventana.getObjects()).equals("RIGHT"))){
-                System.out.println(colision(ventana.getPlayer(), ventana.getObjects()));
+                //System.out.println(colision(ventana.getPlayer(), ventana.getObjects()));
                 ventana.getBg().moveLeft();//bg se mueve invertido
                 ventana.getBgInverted().moveLeft();
                 ventana.getFloor().moveLeft();

@@ -17,6 +17,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.SVGPath;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 /**
@@ -79,6 +83,8 @@ public class Nivel1 extends Vista {
                                                        
         Hole hole1=new Hole(800, 1000);
         this.holes.add(hole1);
+        
+        
     }
     public void show(Stage stage) {
       stage.setTitle("Orion's Maze");
@@ -117,15 +123,19 @@ public class Nivel1 extends Vista {
     @Override
     public void handle(long now){
         
-        
+        Shape playerHitbox = new Rectangle(player.getxPos(), player.getyPos(), 29, 39);
         
         if(frames % 2 == 0){
+            
             pencil.clearRect(0, 0, 650, 406);
+            
+            pencil.setFill(Color.BLACK);
             
             if(enemigos.isEmpty()){
                 Enemy enemigo = new Enemy(this.floor.getxPos()+600, 324, 40, 40, new Image("Imagenes/left0.png"));
                 enemigos.add(enemigo);
             }
+            
             
             //Dibuja el suelo con los huecos (no funciona aun)
             //boolean canDrawFloor=true;
@@ -159,12 +169,18 @@ public class Nivel1 extends Vista {
             
             for(Enemy enemy : this.enemigos){
                 if(!enemigos.isEmpty()){
+                    Shape enemyHitbox = new Rectangle (enemy.getxPos(), enemy.getyPos(), enemy.getWidth(), enemy.getHeight());
+                    Shape comparator = SVGPath.intersect(enemyHitbox, playerHitbox);
                     pencil.drawImage(enemy.getSprite(), enemy.getxPos(), enemy.getyPos());
                     enemy.start();
+                    if(/*comparator.getBoundsInLocal().getWidth() != -1 && */comparator.getBoundsInLocal().getHeight() != -1){
+                        System.out.println("aaa");
+                    }
                 }
             }
             
             pencil.drawImage(player.getSprite(), player.getxPos(), player.getyPos());
+            pencil.strokeRect(player.getxPos(), player.getyPos(), 29, 39);
             
             //Aqui mira si hay objetos arriba o abajo del personaje
             for(StaticObject objeto:this.objects){
