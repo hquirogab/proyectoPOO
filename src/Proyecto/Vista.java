@@ -44,6 +44,7 @@ public abstract class Vista extends AnimationTimer{
     protected ArrayList<StaticObject> objects=new ArrayList<>();
     protected ArrayList<Enemy> enemigos;
     protected Player player;
+    protected ArrayList<Hole> holes;
     protected int frames;
 
     
@@ -57,7 +58,7 @@ public abstract class Vista extends AnimationTimer{
         this.scene = new Scene(layout, canvas.getWidth(), canvas.getHeight());
         this.pencil = canvas.getGraphicsContext2D();
         this.keyPresses= new ArrayList<>();   
-        
+        this.holes=new ArrayList<>();
     }
     
     
@@ -191,6 +192,14 @@ public abstract class Vista extends AnimationTimer{
 
     public void setFloor(StaticObject floor) {
         this.floor = floor;
+    }
+
+    public ArrayList<Hole> getHoles() {
+        return holes;
+    }
+
+    public void setHoles(ArrayList<Hole> holes) {
+        this.holes = holes;
     }
     
     

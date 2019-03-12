@@ -61,6 +61,10 @@ public class ControladorNivel1 extends Controlador{
                 for(Enemy enemy : ventana.getEnemigos()){
                     enemy.moveLeft();
                 }
+                for(Hole hole:ventana.getHoles()){
+                    hole.moveLeft();
+                    hole.setWidth(hole.getWidth()-15);
+                }
             }
             /*Solo se mueve hacia la izquierda si no colisiona con ningún objeto en esa dirección*/
             if ((ventana.getKeyPresses().contains("LEFT"))&&(!colision(ventana.getPlayer(), ventana.getObjects()).equals("LEFT"))){
@@ -73,6 +77,10 @@ public class ControladorNivel1 extends Controlador{
                 }
                 for(Enemy enemy : ventana.getEnemigos()){
                     enemy.moveRight();
+                }
+                for(Hole hole:ventana.getHoles()){
+                    hole.moveRight();
+                    hole.setWidth(hole.getWidth()+15);
                 }
               }
             }

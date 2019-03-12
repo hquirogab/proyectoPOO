@@ -19,16 +19,25 @@ public abstract class Movable extends Thread {
     protected Image sprite;
     protected String direction;
 
-    public Movable(int xPos, int yPos, int width, int Height, Image sprite) {
+    public Movable(int xPos, int yPos, int width, int height, Image sprite) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.sprite = sprite;
         this.width=width;
-        this.height=width;
+        this.height=height;
         this.direction="UP";
     }
 
-    
+    public Movable(int xPosIn, int xPosFin){ //Hacer que la funcion que dibuja el piso en realidad dibuje pequeños segmentos de piso
+                                        //y que no los dibuje cuando la posicion x esta dentro del rango de algun hueco
+                                        //aqui el width corresponde en realidad a la posicion final en x del hueco
+        this.xPos = xPosIn;
+        this.yPos = 0;
+        this.sprite = null;
+        this.width=xPosFin;
+        this.height=0;
+        this.direction="UP";
+    }
 
     public int getxPos() {
         return xPos;
@@ -65,7 +74,6 @@ public abstract class Movable extends Thread {
        cont--;
        }*/
         
-        System.out.println("Deberia moverse");
     }
     
     public void moveDown(){
@@ -120,6 +128,16 @@ public abstract class Movable extends Thread {
     public int getWidth() {
         return width;
     }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    
+    
 
     public void setxPosFinal(int xPosFinal) {
         this.width = xPosFinal;

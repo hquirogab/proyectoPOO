@@ -37,8 +37,16 @@ public class Nivel1 extends Vista {
     private int cont=650;
     private boolean salto;
     private int contadorSalto;
+    private boolean objectUp;
+    private boolean objectDown;
     
     public Nivel1(){
+        
+        objectUp=false;
+        objectDown=true;
+        
+        
+        
         contadorSalto=0;
         salto=false;
         stackGrid = new StackPane();
@@ -60,14 +68,17 @@ public class Nivel1 extends Vista {
         //scene = new Scene (stackGrid, 650, 406);
         
         
-        this.player = new Player(300, 331, 29, 38, 20, new Image("Imagenes/down1.png"));
-        this.floor= new StaticObject(0, 370, 650, 200, new Image("Imagenes/alienfloor1_normal.jpg"));
+        this.player = new Player(300, 331, 29, 39, 20, new Image("Imagenes/down1.png"));
+        this.floor= new StaticObject(0, 371, 300, 200, new Image("Imagenes/alienfloor1_normal.jpg"));
         this.bg=new Background(0, 0, 1800, 860, new Image("Imagenes/fondoN1.jpg"));
         this.bgInverted=new Background(0, 0, 1800, 860, new Image("Imagenes/fondoN1invertido.jpg"));
         
         StaticObject plataforma0=new StaticObject(495, 346, 59, 14, new Image("Imagenes/alienfloor2_diffuse.jpg")); //Los terminos x, y deben ser el x, y
         this.objects.add(plataforma0);                                        //del jugador + o - multiplos de quince para que las colisiones se registren 
- 
+                                                       //Widht y height deben ser multipos de 15 menos una unidad
+                                                       
+        Hole hole1=new Hole(800, 1000);
+        this.holes.add(hole1);
     }
     public void show(Stage stage) {
       stage.setTitle("Orion's Maze");
@@ -105,7 +116,9 @@ public class Nivel1 extends Vista {
     
     @Override
     public void handle(long now){
-
+        
+        
+        
         if(frames % 2 == 0){
             pencil.clearRect(0, 0, 650, 406);
             
@@ -114,18 +127,33 @@ public class Nivel1 extends Vista {
                 enemigos.add(enemigo);
             }
             
+            //Dibuja el suelo con los huecos (no funciona aun)
+            //boolean canDrawFloor=true;
+            /*for(long n=0; n<9999; n++){
+                if(canDrawFloor){
+               pencil.drawImage(floor.getSprite(), floor.getxPos(), floor.getyPos(), floor.getWidth(), floor.getHeight());
+                }
+               for(Hole hole:this.holes){
+                
+                 if((floor.getxPos()>=hole.getxPos()&&floor.getxPos()<=hole.getWidth())){
+                    canDrawFloor=false;
+                 } else {canDrawFloor=true;}
+               }
+            
+               floor.setxPos(floor.getxPos()+1);
+            }*/
+            //floor.setxPos(0);
+            
             for(int n=0; n<8; n++){
-            pencil.drawImage(floor.getSprite(), floor.getxPos()+(649*(n-1)), floor.getyPos(), floor.getWidth(), floor.getHeight());
-
-            if(n%2==0){
-            pencil.drawImage(bg.getSprite(), bg.getxPos()+(1799*n), bg.getyPos(), bg.getWidth(), bg.getHeight());
-            } else pencil.drawImage(bgInverted.getSprite(), bgInverted.getxPos()+(1919*n), bgInverted.getyPos(), bgInverted.getWidth(), bgInverted.getHeight());
+                pencil.drawImage(floor.getSprite(), floor.getxPos()+(300*(n-1)), floor.getyPos(), floor.getWidth(), floor.getHeight());
+              if(n%2==0){
+              pencil.drawImage(bg.getSprite(), bg.getxPos()+(1790*n), bg.getyPos(), bg.getWidth(), bg.getHeight());
+              } else pencil.drawImage(bgInverted.getSprite(), bgInverted.getxPos()+(1790*n), bgInverted.getyPos(), bgInverted.getWidth(), bgInverted.getHeight());
             }
             
             
             for(StaticObject object:this.objects){
                 if(object.getxPos()+object.getWidth()>=0)
-                pencil.fillRect(object.getxPos(), object.getyPos(), object.getWidth(), object.getHeight());
                 pencil.drawImage(object.getSprite(), object.getxPos(), object.getyPos(), object.getWidth(), object.getHeight());
             }
             
@@ -136,35 +164,41 @@ public class Nivel1 extends Vista {
                 }
             }
             
-            //Aqui dibuja el rectangulo de la cabeza
-            pencil.fillRect(player.getxPos(), player.getyPos(), player.getWidth(), player.getHeadHeight());
-            //Aquí dibuja el rectangulo del cuerpo
-            pencil.fillRect(player.getxPos(), player.getyPos()+player.getHeadHeight(), player.getWidth(), player.getHeight()-player.getHeadHeight());
-            
             pencil.drawImage(player.getSprite(), player.getxPos(), player.getyPos());
             
+            //Aqui mira si hay objetos arriba o abajo del personaje
+            for(StaticObject objeto:this.objects){
+                
+               boolean cond1=player.getxPos()<(objeto.getxPos()+objeto.getWidth())&&(player.getxPos()+player.getWidth())>objeto.getxPos();
             
-            if(salto&&contadorSalto<=50){
-                
+               if(((player.getyPos()-1)==(objeto.getyPos()+objeto.getHeight()))&&cond1){                     
+                 objectUp=true;
+               } else {
+                 objectUp=false;
+               }
+                 
+               if(((player.getyPos()+player.getHeight()+1)==(objeto.getyPos()))&&cond1){
+                 objectDown=true;
+               } else{
+                 objectDown=false;
+               }
+            }
+            
+            //Aqui mira exclusivamente si no tiene piso debajo
+               if((player.getyPos()+player.getHeight()+1)==(floor.getyPos())){
+                 objectDown=true;
+               }
+               
+               /*Idea: Para que el player se caiga, se deben programar los huecos con dos atributos: Posicion x y ancho (width)*/
+            
+            
+            if(salto&&contadorSalto<=50&&!objectUp){
+            
                 player.moveUp();
-                player.setCanGoDown(true);
-                /*if(player.getyPos() > 200 && player.getDirection().equals("UP")){
-
-                        player.moveUp();
-              
-              
-                        if(player.getyPos() == 286)player.setDirection("DOWN"); //331 - mutiplo de 3
-                    
-                }
-                
-                if(player.getDirection().equals("DOWN")){
-                           player.moveDown();
-                        if(player.getyPos() == 331)player.setDirection("UP"); ////331 + mutiplo de 3
-                }*/
                 contadorSalto++;
                 
-            }else if(contadorSalto>0){
-                if(player.getCanGoDown())
+            }else if(!objectDown){
+                //contadorSalto>0&&
                 player.moveDown();
                 contadorSalto--;
                 salto=false;
@@ -178,3 +212,4 @@ public class Nivel1 extends Vista {
     
     
 }
+

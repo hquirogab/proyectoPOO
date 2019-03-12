@@ -16,15 +16,15 @@ public class Player extends Movable {
     private Image left = new Image("Imagenes/left0.png");
     private Image front = new Image("Imagenes/down1.png");
     private int headWidth;
-    private boolean canGoDown;
+
     
-    public Player(int xPos, int yPosCabeza, int xPosFinal, int yPosFinal,int headWidth, Image sprite) {
-        super(xPos, yPosCabeza, xPosFinal, yPosFinal, sprite);
+    public Player(int xPos, int yPosCabeza, int width, int height,int headWidth, Image sprite) {
+        super(xPos, yPosCabeza, width, height, sprite);
         right = new Image("Imagenes/right0.png");
         left = new Image("Imagenes/left0.png");
         front = new Image("Imagenes/down1.png");    
         this.headWidth=headWidth;
-        this.canGoDown=false;
+
     }
 
     
@@ -72,14 +72,6 @@ public class Player extends Movable {
 
     public void setHeadWidth(int yPosCuerpo) {
         this.headWidth = yPosCuerpo;
-    }
-
-    public boolean getCanGoDown() {
-        return canGoDown;
-    }
-
-    public void setCanGoDown(boolean canGoDown) {
-        this.canGoDown = canGoDown;
     }
 
 
