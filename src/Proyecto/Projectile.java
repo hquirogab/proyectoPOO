@@ -13,32 +13,33 @@ import javafx.scene.shape.Rectangle;
  * @author Gloria
  */
 public class Projectile extends Movable {
-    private String direction;
+    private String movingDirection;
     private Rectangle hitbox;
 
     public Projectile(int xPos, int yPos, String direction) {
         super(xPos, yPos, 0, 0, null);
         this.sprite = new Image("Imagenes/laser.png");
-        this.direction = direction;
+        this.movingDirection = direction;
         this.hitbox = new Rectangle(xPos, yPos, width, height);
         this.width = (int)sprite.getWidth();
         this.height = (int)sprite.getHeight();
     }
 
-    public String getDirection() {
-        return direction;
+    public String getMovingDirection() {
+        return movingDirection;
     }
-
+    
     public Rectangle getHitbox() {
         return hitbox;
     }
     
     @Override
-    public void start(){
-        if(direction.equals("RIGHT")){
+    public void run(){
+        if(movingDirection.equals("RIGHT")){
             moveRight();
+            System.out.println("POS X LASER: " + xPos);
         }
-        if(direction.equals("LEFT")){
+        if(movingDirection.equals("LEFT")){
             moveLeft();
         }
     }

@@ -18,6 +18,8 @@ public class Modelo {
     
     
     public Modelo() {
+        this.vidas = 3;
+        this.salud = 5;
     }
 
     public int getVidas() {

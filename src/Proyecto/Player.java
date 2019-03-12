@@ -17,6 +17,7 @@ public class Player extends Movable {
     private Image left = new Image("Imagenes/left0.png");
     private Image front = new Image("Imagenes/down1.png");
     private int headWidth;
+    private String facingDirection = null;
 
     
     public Player(int xPos, int yPosCabeza, int width, int height,int headWidth, Image sprite) {
@@ -32,11 +33,13 @@ public class Player extends Movable {
     @Override
     public void moveLeft(){
         sprite = left;
+        facingDirection = "LEFT";
     }
     
     @Override
     public void moveRight(){
         sprite = right;
+        facingDirection = "RIGHT";
     }
     
     public void reset(){
@@ -75,6 +78,11 @@ public class Player extends Movable {
         this.headWidth = yPosCuerpo;
     }
 
+    public String getFacingDirection() {
+        return facingDirection;
+    }
+    
+    
     
 
 

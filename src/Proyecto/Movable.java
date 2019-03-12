@@ -20,6 +20,7 @@ public abstract class Movable extends Thread {
     protected int height;
     protected Image sprite;
     protected String direction;
+    protected final int xPosInicial;
   
 
     public Movable(int xPos, int yPos, int width, int height, Image sprite) {
@@ -29,7 +30,7 @@ public abstract class Movable extends Thread {
         this.width=width;
         this.height=height;
         this.direction="UP";
-        
+        this.xPosInicial = xPos;
     }
 
     public Movable(int xPosIn, int xPosFin){ //Hacer que la funcion que dibuja el piso en realidad dibuje pequeños segmentos de piso
@@ -41,6 +42,7 @@ public abstract class Movable extends Thread {
         this.width=xPosFin;
         this.height=0;
         this.direction="UP";
+        this.xPosInicial = xPos;
     }
 
     public int getxPos() {
