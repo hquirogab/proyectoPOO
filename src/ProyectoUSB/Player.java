@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.scene.image.Image;
 import javafx.scene.shape.Shape;
@@ -82,6 +82,10 @@ public class Player extends Movable {
         return facingDirection;
     }
     
+    public Projectile shoot(){
+        Projectile projectile = new Projectile(xPos, yPos, facingDirection);
+        return projectile;
+    }
     
     
 

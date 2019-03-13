@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -93,7 +93,7 @@ public class Menu {
         stackGrid.getChildren().add(grid);
         
         scene = new Scene(stackGrid, 650, 406);
-        audio = new AudioClip (this.getClass().getResource("AudioMenu.wav").toString());
+        audio = new AudioClip (this.getClass().getResource("/Audios/AudioMenu.wav").toString());
         audio.play();
         
         if(audio.isPlaying()==false){
@@ -126,6 +126,10 @@ public class Menu {
 
     public Button getExit() {
         return exit;
+    }
+
+    public AudioClip getAudio() {
+        return audio;
     }
 
     

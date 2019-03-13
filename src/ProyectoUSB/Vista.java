@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.animation.AnimationTimer;
@@ -46,6 +46,8 @@ public abstract class Vista extends AnimationTimer{
     protected Player player;
     protected ArrayList<Hole> holes;
     protected int frames;
+    protected ArrayList<Projectile> projectiles;
+    protected ArrayList<Projectile> enemyProjectiles;
 
     
     
@@ -59,6 +61,8 @@ public abstract class Vista extends AnimationTimer{
         this.pencil = canvas.getGraphicsContext2D();
         this.keyPresses= new ArrayList<>();   
         this.holes=new ArrayList<>();
+        this.projectiles = new ArrayList<>();
+        this.enemyProjectiles = new ArrayList<>();
     }
     
     
@@ -201,6 +205,11 @@ public abstract class Vista extends AnimationTimer{
     public void setHoles(ArrayList<Hole> holes) {
         this.holes = holes;
     }
+
+    public ArrayList<Projectile> getProjectiles() {
+        return projectiles;
+    }
+    
     
     
 }

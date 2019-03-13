@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -18,8 +18,8 @@ import javafx.stage.Stage;
  *
  * @author Juan
  */
-public class Nivel2 {
-    private Scene scene;
+public class Nivel3 {
+     private Scene scene;
     private GraphicsContext gc;
     private StackPane stackGrid;
     private Image background1;
@@ -30,9 +30,9 @@ public class Nivel2 {
     private Canvas canvas;
     private int cont=650;
     
-    public Nivel2(){
+    public Nivel3(){
         stackGrid = new StackPane();
-        background1 = new Image("Imagenes/esc2.jpg");
+        background1 = new Image("Imagenes/esc3.jpg");
         image1 = new ImageView(background1);
         //background2 = new Image("Imagenes/ground.jpg");
         //image2 = new ImageView(background2);

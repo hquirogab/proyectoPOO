@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -72,18 +72,15 @@ public abstract class Controlador {
             boolean cond2=object.getyPos()<(objeto.getyPos()+objeto.getHeight())&&((object.getyPos()+object.getHeight())>objeto.getyPos());
             
             
-        if(((object.getyPos()-1)==(objeto.getyPos()+objeto.getHeight()))&&cond1){                     
+        /*if(((object.getyPos()-1)==(objeto.getyPos()+objeto.getHeight()))&&cond1){                     
             return "UP";
         } else if(((object.getyPos()+object.getHeight()+1)==(objeto.getyPos()))&&cond1){
             return "DOWN";
-        }else if(((object.getxPos()+object.getWidth()+1)==(objeto.getxPos()))&&cond2){
-            System.out.println("Si devuelve right");
+        }else*/ if(((object.getxPos()+object.getWidth()+1)==(objeto.getxPos()))&&cond2){
             return "RIGHT";
         }else if(((object.getxPos()-1)==(objeto.getxPos()+objeto.getWidth()))&&cond2){
             return "LEFT";
         }
-        System.out.println(object.getxPos()-1);
-        System.out.println(objeto.getxPos()+objeto.getWidth());
         }
         
         return "NONE";

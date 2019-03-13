@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,7 +44,7 @@ public class ControladorNivel1 extends Controlador{
     @Override
     public void handle(KeyEvent event){
           String code = event.getCode().toString();
-          Projectile laser = null;
+          
           if(!paused){
             if(!ventana.getKeyPresses().contains(code)){
                         ventana.getKeyPresses().add(code);
@@ -71,20 +71,20 @@ public class ControladorNivel1 extends Controlador{
             /*Solo se mueve hacia la izquierda si no colisiona con ningún objeto en esa dirección*/
             if ((ventana.getKeyPresses().contains("LEFT") || ventana.getKeyPresses().contains("A"))&&(!colision(ventana.getPlayer(), ventana.getObjects()).equals("LEFT"))){
                 if(ventana.getBg().xPos!=0){
-                ventana.getBg().moveRight();//bg se mueve invertido
-                ventana.getBgInverted().moveRight();
-                ventana.getFloor().moveRight();
-                ventana.getPlayer().moveLeft();
-                for(StaticObject objecto:ventana.getObjects()){
-                    objecto.moveRight();
-                }
-                for(Enemy enemy : ventana.getEnemigos()){
-                    enemy.moveRight();
-                }
-                for(Hole hole:ventana.getHoles()){
-                    hole.moveRight();
-                    hole.setWidth(hole.getWidth()+15);
-                }
+                    ventana.getBg().moveRight();//bg se mueve invertido
+                    ventana.getBgInverted().moveRight();
+                    ventana.getFloor().moveRight();
+                    ventana.getPlayer().moveLeft();
+                    for(StaticObject objecto:ventana.getObjects()){
+                        objecto.moveRight();
+                    }
+                    for(Enemy enemy : ventana.getEnemigos()){
+                        enemy.moveRight();
+                    }
+                    for(Hole hole:ventana.getHoles()){
+                        hole.moveRight();
+                        hole.setWidth(hole.getWidth()+15);
+                    }
               }
             }
             /*Solo se mueve hacia arriba si no colisiona con ningún objeto en esa dirección*/
@@ -95,8 +95,8 @@ public class ControladorNivel1 extends Controlador{
                 ventana.setSalto(true);
             }
             if(ventana.getKeyPresses().contains("C")){
-                laser = new Projectile(ventana.getPlayer().getxPos(), ventana.getPlayer().getyPos(), ventana.getPlayer().getFacingDirection());
-                
+                Projectile projectile = ventana.getPlayer().shoot();
+                ventana.getProjectiles().add(projectile);
             }
           }
       }

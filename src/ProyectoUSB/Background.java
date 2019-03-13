@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
+
 import javafx.scene.image.Image;
+
 /**
  *
- * @author Laura M
+ * @author Gloria
  */
-public class StaticObject extends Movable{
-    
-    public StaticObject (int xPos, int yPos, int xPosFinal, int yPosFinal, Image sprite) {
+public class Background extends Movable {
+
+    public Background(int xPos, int yPos, int xPosFinal, int yPosFinal, Image sprite) {
         super(xPos, yPos, xPosFinal, yPosFinal, sprite);
     }
- 
+    
 }

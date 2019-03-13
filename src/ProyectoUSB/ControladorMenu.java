@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -40,6 +40,7 @@ public class ControladorMenu {
         public void handle(ActionEvent t) {
            ControladorNivel1 n = new ControladorNivel1(modelo);
            n.mostrarVista();
+           menu.getAudio().stop();
         }
         
     }

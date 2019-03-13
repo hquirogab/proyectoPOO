@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
@@ -21,6 +21,7 @@ public abstract class Movable extends Thread {
     protected Image sprite;
     protected String direction;
     protected final int xPosInicial;
+    protected int ID;
   
 
     public Movable(int xPos, int yPos, int width, int height, Image sprite) {
@@ -99,10 +100,7 @@ public abstract class Movable extends Thread {
     
     
     public void jump(){
-        System.out.println(direction.equals("UP"));
-
         if(yPos > 200 && direction.equals("UP")){
-              System.out.println(direction.equals("UP"));
              // while(direction.equals("UP")){
               moveUp();
               

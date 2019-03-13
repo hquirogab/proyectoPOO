@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
@@ -18,7 +18,7 @@ public class Projectile extends Movable {
 
     public Projectile(int xPos, int yPos, String direction) {
         super(xPos, yPos, 0, 0, null);
-        this.sprite = new Image("Imagenes/laser.png");
+        this.sprite = new Image("Imagenes/laser2.png");
         this.movingDirection = direction;
         this.hitbox = new Rectangle(xPos, yPos, width, height);
         this.width = (int)sprite.getWidth();
@@ -34,10 +34,19 @@ public class Projectile extends Movable {
     }
     
     @Override
-    public void run(){
+    public void moveRight(){
+        xPos ++;
+    }
+    
+    @Override
+    public void moveLeft(){
+        xPos --;
+    }
+    
+    @Override
+    public void start(){
         if(movingDirection.equals("RIGHT")){
             moveRight();
-            System.out.println("POS X LASER: " + xPos);
         }
         if(movingDirection.equals("LEFT")){
             moveLeft();

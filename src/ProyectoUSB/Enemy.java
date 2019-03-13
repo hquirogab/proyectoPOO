@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto;
+package ProyectoUSB;
 
+import java.util.ArrayList;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -17,10 +18,12 @@ import javafx.scene.shape.Shape;
  */
 public class Enemy extends Movable implements Runnable {
     
+    private int health;
     
-    public Enemy(int xPos, int yPos, int xPosFinal, int yPosFinal, Image sprite) {
+    public Enemy(int xPos, int yPos, int xPosFinal, int yPosFinal, Image sprite, int health) {
         super(xPos, yPos, xPosFinal, yPosFinal, sprite);
         this.direction = "UP";
+        this.health = health;
     }
     
     @Override
@@ -44,4 +47,19 @@ public class Enemy extends Movable implements Runnable {
             if(yPos == 330)direction = "UP";
         }
     }
+    
+    public Projectile shoot(ArrayList<Projectile> projectiles){
+        Projectile projectile = new Projectile(xPos, yPos, "LEFT");
+        return projectile;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
+    
 }
